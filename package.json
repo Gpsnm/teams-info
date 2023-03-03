@@ -1,0 +1,27 @@
+{
+  "name": "teams-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gpsnm/teams-info.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gpsnm/teams-info/issues"
+  },
+  "homepage": "https://github.com/Gpsnm/teams-info#readme",
+  "dependencies": {
+    "inquirer": "^6.0.0",
+    "jest": "^29.4.3"
+  }
+}
