@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/Gpsnm/teams-info.git"
   },
   "keywords": [],
