@@ -14,6 +14,6 @@ Project is created with Node.js Inquirer Npm package and HTML
 
 ## Image of web page
 
-<img src="/images/127.0.0.1_5500_output_team.html.png" alt="" />
 
+<img src="/assets/images/127.0.0.1_5500_output_team.html (1).png" alt="">
 
