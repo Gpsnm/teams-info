@@ -26,8 +26,13 @@ function start() {
               return true;
             }
             return "Please enter at least one character";
-          },
+          }
         },
+        {
+            type:"input",
+            name:"managerId",
+            message:"What is the managers employee id number?"
+          },
         {
           type: "input",
           name: "managerEmail",
@@ -65,3 +70,45 @@ function createTeam(){
   ]
   )
 }
+
+function createEngineer(){
+  inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "engineerName",
+          message: "What is the Engineers name? ",
+          validate: (answer) => {
+            if (answer != "") {
+              return true;
+            }
+            return "Please enter at least one character";
+          },
+        },
+        {
+          type:"input",
+          name:"engineerId",
+          message:"What is the engineers employee id number?"
+        },
+        {
+          type: "input",
+          name: "engineerEmail",
+          message: "What is the engineers email address ?",
+        },
+        {
+          type: "input",
+          name: "engineerGitHub",
+          message: "What is the engineers Github username? ",
+        },
+      ])
+      .then((answers) => {
+        const engineer = new Engineer(
+          answers.engineer,
+          answers.engineerId,
+          answers.engineerEmail,
+          answers.engineerGithub
+        );
+        team.push(engineer);
+        // call the next function that will ask what type of employee will be created next
+        createTeam();
+})}
