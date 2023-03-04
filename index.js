@@ -58,17 +58,6 @@ function start() {
   }
 }
 
-function createTeam() {
-  inquirer.prompt([
-    {
-      type: "list",
-      name: "teamChoice",
-      message: "what type of team member would you like to add?",
-      choices: ["Engineer", "Intern", "I don't want to add anything else"],
-    },
-  ]);
-}
-
 function createEngineer() {
   inquirer
     .prompt([
@@ -150,5 +139,29 @@ function createIntern() {
       );
       team.push(intern);
       createTeam();
+    });
+}
+
+function createTeam() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "teamChoice",
+        message: "what type of team member would you like to add?",
+        choices: ["Engineer", "Intern", "I don't want to add anything else"],
+      },
+    ])
+    .then((answers) => {
+      switch (answers.teamChoice) {
+        case "Engineer":
+          createEngineer();
+          break;
+        case "Intern":
+          createIntern();
+          break;
+        default:
+          BuildTeam();
+      }
     });
 }
