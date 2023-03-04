@@ -14,7 +14,7 @@ let team = [];
 
 function start() {
   // function to generate manager
-  function getManager() {
+  function createManager() {
     inquirer
       .prompt([
         {
@@ -49,14 +49,13 @@ function start() {
           answers.managerName,
           answers.managerId,
           answers.managerEmail,
-          answers.managerOfficeNumber
+          answers.officeNumber
         );
         team.push(manager);
         // call the next function that will ask what type of employee will be created next
         createTeam();
       });
   }
-}
 
 function createEngineer() {
   inquirer
@@ -90,10 +89,10 @@ function createEngineer() {
     ])
     .then((answers) => {
       const engineer = new Engineer(
-        answers.engineer,
+        answers.engineerName,
         answers.engineerId,
         answers.engineerEmail,
-        answers.engineerGithub
+        answers.engineerGitHub
       );
       team.push(engineer);
       createTeam();
@@ -105,7 +104,7 @@ function createIntern() {
     .prompt([
       {
         type: "input",
-        name: "InternName",
+        name: "internName",
         message: "What is the Interns name? ",
         validate: (answer) => {
           if (answer != "") {
@@ -117,22 +116,22 @@ function createIntern() {
       {
         type: "input",
         name: "internId",
-        message: "What is the engineers employee id number?",
+        message: "What is the interns employee id number?",
       },
       {
         type: "input",
         name: "internEmail",
-        message: "What is the engineers email address ?",
+        message: "What is the interns email address ?",
       },
       {
         type: "input",
         name: "internSchool",
-        message: "What school does the inturn attend?",
+        message: "What school does the intern attend?",
       },
     ])
     .then((answers) => {
       const intern = new Intern(
-        answers.intern,
+        answers.internName,
         answers.internId,
         answers.internEmail,
         answers.internSchool
@@ -161,7 +160,20 @@ function createTeam() {
           createIntern();
           break;
         default:
-          BuildTeam();
+          buildTeam();
       }
     });
 }
+
+
+function buildTeam(){
+  if (!fs.existsSync(OUTPUT_DIR)) {
+      fs.mkdirSync(OUTPUT_DIR);}
+    fs.writeFileSync(outputPath, render(team));
+    console.log("successfully generated team profile!");
+  }
+
+createManager()
+};
+
+start();
